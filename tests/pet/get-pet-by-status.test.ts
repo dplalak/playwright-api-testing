@@ -7,7 +7,7 @@ test.describe('Get pet by status tests', () => {
   });
 
   test('Should find a pet by status', { tag: ['@smoke'] }, async ({ petApi, registerPetForCleanup }) => {
-    const newPet = buildPetPayload({ status: 'available' });
+    const newPet = buildPetPayload();
     registerPetForCleanup(newPet.id);
     await petApi.expectJson(await petApi.createPet(newPet), 200);
 

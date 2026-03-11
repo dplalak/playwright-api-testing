@@ -7,7 +7,7 @@ test.describe('Create pet tests', () => {
   });
 
   test('Should create a new pet', { tag: ['@smoke'] }, async ({ petApi, registerPetForCleanup }) => {
-    const newPet = buildPetPayload({ status: 'available' });
+    const newPet = buildPetPayload();
     registerPetForCleanup(newPet.id);
 
     const createResponse = await petApi.createPet(newPet);
@@ -15,6 +15,6 @@ test.describe('Create pet tests', () => {
 
     expect(createdPet.id).toBe(newPet.id);
     expect(createdPet.name).toBe(newPet.name);
-    expect(createdPet.status).toBe('available');
+    expect(createdPet.status).toBe(newPet.status);
   });
 });
